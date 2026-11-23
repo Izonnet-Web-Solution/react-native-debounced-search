@@ -1,10 +1,4 @@
 <div align="center">
-  <img src="./src/assets/banner.png" alt="React Native Debounced Search Banner" width="100%" />
-</div>
-
-<br />
-
-<div align="center">
 
 # @izonnet-web-solution/react-native-debounced-search
 
@@ -12,26 +6,29 @@
 [![npm downloads](https://img.shields.io/npm/dm/@izonnet-web-solution/react-native-debounced-search.svg?style=flat-square)](https://www.npmjs.com/package/@izonnet-web-solution/react-native-debounced-search)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://github.com/nileshahir/DebouncedSearch/pulls)
 
-**A lightweight, zero-dependency, and highly customizable debounced search input component and hook for React Native with ready-made UI presets.**
+**A lightweight, zero-dependency, and highly customizable React Native debounced search bar and hook with ready-made UI presets (iOS, Pill, Material, Outline).**
+
+<br />
+
+<img src="https://raw.githubusercontent.com/Izonnet-Web-Solution/react-native-debounced-search/main/packages/react-native-debounced-search/src/assets/banner.png" alt="React Native Debounced Search Banner" width="100%" />
 
 </div>
 
 ---
 
-## 🚀 Key Features
+## ✨ Highlights
 
-- ⚡️ **Zero External Dependencies:** Built with pure React Native components (no external icon or SVG libraries needed).
-- 🎨 **5 Ready-Made UI Presets (`variant`):** Instant modern styling (`'ios'`, `'pill'`, `'material'`, `'outline'`, `'default'`).
-- ⌨️ **Immediate Search on Enter:** Pressing the keyboard "Search" / "Enter" key executes the search query immediately without waiting for the delay.
-- ⏱️ **Customizable Delay:** Adjust debounce timing easily (default: `500ms`).
-- 🔤 **Smart `minLength` Support:** Prevents unnecessary 1-letter API calls while preserving 2-letter queries (like *HP*, *LG*, *Mi*, *TV*) on submit.
-- 🧹 **Built-in Clear (✕) Button:** Shows automatically when text is typed and clears with a tap.
-- ⏳ **Built-in Activity Indicator:** Toggle a loading spinner directly inside the search bar.
-- 🔍 **Built-in Responsive Icons:** Clean default search and clear icons out of the box.
-- 🪝 **Standalone `useDebounce` Hook:** Exported separately for developers building their own custom inputs.
-- 📱 **Full Platform Support:** Works seamlessly on iOS, Android & React Native Web.
+- ⚡️ **Zero External Runtime Dependencies:** Built 100% on pure React Native primitives. No vector icons, fonts, or SVG dependencies required.
+- 🎨 **5 Ready-Made UI Presets (`variant`):** Professional styles out-of-the-box (`'pill'`, `'ios'`, `'material'`, `'outline'`, `'default'`).
+- ⌨️ **Immediate Search on Enter:** Pressing keyboard Search/Enter executes the search query immediately without waiting for the debounce delay.
+- ⏱️ **Configurable Debounce Delay:** Easily set delay timing (default: `500ms`).
+- 🔤 **Smart `minLength` Support:** Prevents single-character spam calls while safely allowing 2-letter queries (like *HP*, *LG*, *Mi*, *TV*) on Enter.
+- 🧹 **Built-in Clear (✕) Button:** Automatically appears when text is typed and resets the query with one tap.
+- ⏳ **Built-in Loading Spinner:** Toggle an ActivityIndicator spinner directly inside the input container.
+- 🔍 **Built-in Pure RN Icons:** Responsive search and clear icons rendered natively.
+- 🪝 **Standalone `useDebounce` Hook:** Exported separately for custom input fields and forms.
+- 📱 **Universal Platform Support:** Tested and optimized for iOS, Android, and React Native Web.
 
 ---
 
@@ -53,7 +50,9 @@ bun add @izonnet-web-solution/react-native-debounced-search
 
 ---
 
-## 💡 Quick Start
+## 🚀 Quick Start
+
+### Basic Usage
 
 ```tsx
 import React, { useState } from 'react';
@@ -71,19 +70,19 @@ export default function SearchScreen() {
     }
 
     setLoading(true);
-    console.log('Fetching API for:', query);
+    console.log('Searching API for:', query);
 
-    // Call your search API here...
+    // Call your backend search API...
     setTimeout(() => {
-      setResults([`Result 1 for "${query}"`, `Result 2 for "${query}"`]);
+      setResults([`Result for "${query}" #1`, `Result for "${query}" #2`]);
       setLoading(false);
-    }, 400);
+    }, 300);
   };
 
   return (
     <View style={styles.container}>
       <DebouncedSearch
-        placeholder="Search products, devices..."
+        placeholder="Search devices, accessories..."
         delay={500}
         loading={loading}
         onSearch={handleSearch}
@@ -106,115 +105,32 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
   },
   item: {
-    padding: 12,
+    padding: 14,
     borderBottomWidth: 1,
-    borderBottomColor: '#EEE',
+    borderBottomColor: '#F0F0F0',
   },
 });
 ```
 
----
+### Ready-Made UI Presets (`variant`)
 
-## 🎨 UI Variants (Ready-Made Presets)
-
-Developers can switch styles in **1 line of code** without writing custom styles:
+Switch styles instantly with **1 prop**:
 
 ```tsx
-// 1. Modern E-commerce Capsule Shape (with shadow)
-<DebouncedSearch
-  variant="pill"
-  placeholder="Search products..."
-  onSearch={handleSearch}
-/>
+// 1. E-commerce Pill Shape with subtle shadow
+<DebouncedSearch variant="pill" onSearch={handleSearch} />
 
-// 2. Apple / iOS Native Search Bar (borderless, soft grey background)
-<DebouncedSearch
-  variant="ios"
-  placeholder="Search..."
-  onSearch={handleSearch}
-/>
+// 2. Apple / iOS Native Search Bar
+<DebouncedSearch variant="ios" onSearch={handleSearch} />
 
-// 3. Android Material Style (flat, accent bottom border)
-<DebouncedSearch
-  variant="material"
-  placeholder="Search..."
-  onSearch={handleSearch}
-/>
+// 3. Android Material Style with accent bottom line
+<DebouncedSearch variant="material" onSearch={handleSearch} />
 
-// 4. Minimalist Bordered Style
-<DebouncedSearch
-  variant="outline"
-  placeholder="Search..."
-  onSearch={handleSearch}
-/>
+// 4. Minimalist Bordered Outline
+<DebouncedSearch variant="outline" onSearch={handleSearch} />
 
-// 5. Classic Rounded Rectangle
-<DebouncedSearch
-  variant="default"
-  placeholder="Search..."
-  onSearch={handleSearch}
-/>
-```
-
----
-
-## 🪝 Standalone `useDebounce` Hook
-
-If you only need debounce logic for your own custom UI:
-
-```tsx
-import React, { useState, useEffect } from 'react';
-import { TextInput, View, Text } from 'react-native';
-import { useDebounce } from '@izonnet-web-solution/react-native-debounced-search';
-
-export function CustomInput() {
-  const [text, setText] = useState('');
-  const debouncedQuery = useDebounce(text, 500);
-
-  useEffect(() => {
-    if (debouncedQuery) {
-      console.log('API call for:', debouncedQuery);
-    }
-  }, [debouncedQuery]);
-
-  return (
-    <View>
-      <TextInput
-        value={text}
-        onChangeText={setText}
-        placeholder="Type to search..."
-      />
-      <Text>Debounced: {debouncedQuery}</Text>
-    </View>
-  );
-}
-```
-
----
-
-## 🕹️ Imperative Ref Methods (`DebouncedSearchRef`)
-
-Control the search bar programmatically from a parent component:
-
-```tsx
-import React, { useRef } from 'react';
-import { View, Button } from 'react-native';
-import { DebouncedSearch, DebouncedSearchRef } from '@izonnet-web-solution/react-native-debounced-search';
-
-export function SearchControls() {
-  const searchRef = useRef<DebouncedSearchRef>(null);
-
-  return (
-    <View>
-      <DebouncedSearch ref={searchRef} onSearch={(q) => console.log(q)} />
-      
-      <Button title="Focus" onPress={() => searchRef.current?.focus()} />
-      <Button title="Blur" onPress={() => searchRef.current?.blur()} />
-      <Button title="Clear" onPress={() => searchRef.current?.clear()} />
-      <Button title="Set Query" onPress={() => searchRef.current?.setValue('iPhone')} />
-    </View>
-  );
-}
+// 5. Classic Rounded Rectangle (Default)
+<DebouncedSearch variant="default" onSearch={handleSearch} />
 ```
 
 ---
@@ -254,11 +170,102 @@ export function SearchControls() {
 
 ---
 
+## 🎨 Theming & Dark Mode
+
+The component can easily adapt to Dark Mode or custom design systems:
+
+```tsx
+import { useColorScheme } from 'react-native';
+import { DebouncedSearch } from '@izonnet-web-solution/react-native-debounced-search';
+
+export function DarkSearch() {
+  const isDarkMode = useColorScheme() === 'dark';
+
+  return (
+    <DebouncedSearch
+      onSearch={(q) => console.log(q)}
+      placeholder="Search in dark mode..."
+      placeholderTextColor={isDarkMode ? '#8E8E93' : '#6C757D'}
+      inputContainerStyle={{
+        backgroundColor: isDarkMode ? '#1C1C1E' : '#F2F2F7',
+        borderColor: isDarkMode ? '#2C2C2E' : '#E5E5EA',
+      }}
+      focusedInputContainerStyle={{
+        borderColor: '#007AFF',
+      }}
+      inputStyle={{
+        color: isDarkMode ? '#FFFFFF' : '#000000',
+      }}
+    />
+  );
+}
+```
+
+---
+
+## 🪝 Standalone `useDebounce` Hook
+
+Use the built-in hook in custom search inputs, autocomplete dropdowns, or forms:
+
+```tsx
+import React, { useState, useEffect } from 'react';
+import { TextInput, View, Text } from 'react-native';
+import { useDebounce } from '@izonnet-web-solution/react-native-debounced-search';
+
+export function CustomSearchInput() {
+  const [text, setText] = useState('');
+  const debouncedQuery = useDebounce(text, 400);
+
+  useEffect(() => {
+    if (debouncedQuery) {
+      console.log('Search triggered for:', debouncedQuery);
+    }
+  }, [debouncedQuery]);
+
+  return (
+    <View>
+      <TextInput
+        value={text}
+        onChangeText={setText}
+        placeholder="Type here..."
+      />
+      <Text>Debounced Query: {debouncedQuery}</Text>
+    </View>
+  );
+}
+```
+
+---
+
+## 🕹️ Imperative Ref API (`DebouncedSearchRef`)
+
+```tsx
+import React, { useRef } from 'react';
+import { View, Button } from 'react-native';
+import { DebouncedSearch, DebouncedSearchRef } from '@izonnet-web-solution/react-native-debounced-search';
+
+export function SearchControls() {
+  const searchRef = useRef<DebouncedSearchRef>(null);
+
+  return (
+    <View>
+      <DebouncedSearch ref={searchRef} onSearch={(q) => console.log(q)} />
+      
+      <Button title="Focus" onPress={() => searchRef.current?.focus()} />
+      <Button title="Blur" onPress={() => searchRef.current?.blur()} />
+      <Button title="Clear" onPress={() => searchRef.current?.clear()} />
+      <Button title="Set Query" onPress={() => searchRef.current?.setValue('iPhone')} />
+    </View>
+  );
+}
+```
+
+---
+
 ## 👨‍💻 Author
 
 **Nilesh Ahir**  
-* GitHub: [@nileshahir](https://github.com/nileshahir)  
-* Organization: [Izonnet Web Solution](https://izonnet.com)
+* Organization: [Izonnet Web Solution](https://github.com/Izonnet-Web-Solution)
 
 ---
 
