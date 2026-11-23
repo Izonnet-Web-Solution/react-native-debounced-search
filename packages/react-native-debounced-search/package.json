@@ -1,0 +1,28 @@
+{
+  "name": "@izonnet-web-solution/react-native-debounced-search",
+  "version": "1.0.0",
+  "description": "A high-performance debounced search input component and hook for React Native",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "react-native",
+    "debounce",
+    "search",
+    "debounced-search",
+    "search-bar",
+    "textinput"
+  ],
+  "author": "Nilesh Ahir",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-native": ">=0.70.0"
+  }
+}

@@ -1,97 +1,135 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+<div align="center">
+  <img src="./assets/banner.png" alt="React Native Debounced Search Banner" width="100%" />
+</div>
 
-# Getting Started
+<br />
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+<div align="center">
 
-## Step 1: Start Metro
+# React Native Debounced Search
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+[![npm version](https://img.shields.io/npm/v/@izonnet-web-solution/react-native-debounced-search.svg?style=flat-square)](https://www.npmjs.com/package/@izonnet-web-solution/react-native-debounced-search)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![React Native](https://img.shields.io/badge/React%20Native-0.88.1-61DAFB?style=flat-square&logo=react&logoColor=black)](https://reactnative.dev/)
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+**A complete monorepo containing the `@izonnet-web-solution/react-native-debounced-search` NPM package along with a full React Native demo application.**
 
-```sh
-# Using npm
-npm start
+</div>
 
-# OR using Yarn
-yarn start
+---
+
+## 📁 Repository Structure
+
+```text
+DebouncedSearch/
+├── packages/
+│   └── react-native-debounced-search/   # 📦 The Publishable NPM Package
+│       ├── src/
+│       │   ├── components/              # DebouncedSearch & ClearButton UI
+│       │   ├── hooks/                   # Standalone useDebounce hook
+│       │   ├── theme/                   # Default colors & design tokens
+│       │   ├── types/                   # TypeScript interfaces & props
+│       │   ├── assets/                  # Zero-dependency SVG/View icons
+│       │   └── index.ts                 # Main package entry export
+│       ├── package.json                 # Package configuration
+│       ├── tsconfig.json                # Package TypeScript configuration
+│       └── README.md                    # Detailed package documentation
+├── src/
+│   └── screens/
+│       └── HomeSreen.tsx                # 📱 Interactive Demo Screen
+├── App.tsx                              # App Entry Point
+├── package.json                         # Root project configuration
+└── metro.config.js                      # Metro configuration with package watch
 ```
 
-## Step 2: Build and run your app
+---
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+## 🚀 Getting Started
 
-### Android
+### 1. Clone the Repository
 
-```sh
-# Using npm
-npm run android
-
-# OR using Yarn
-yarn android
+```bash
+git clone https://github.com/nileshahir/DebouncedSearch.git
+cd DebouncedSearch
 ```
 
-### iOS
+### 2. Install Dependencies
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
+```bash
+npm install
 ```
 
-Then, and every time you update your native dependencies, run:
+### 3. Run the Example App
 
-```sh
-bundle exec pod install
-```
+#### iOS
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+```bash
+# Install CocoaPods (First time only)
+cd ios && bundle exec pod install && cd ..
 
-```sh
-# Using npm
+# Start the iOS simulator
 npm run ios
-
-# OR using Yarn
-yarn ios
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+#### Android
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+```bash
+# Start the Android emulator
+npm run android
+```
 
-## Step 3: Modify your app
+---
 
-Now that you have successfully run the app, let's make changes!
+## 📦 About the Package
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+The core package **`@izonnet-web-solution/react-native-debounced-search`** is located in [`packages/react-native-debounced-search`](packages/react-native-debounced-search).
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+### Core Highlights:
+- **Zero External Dependencies:** Built with pure React Native components (no external icon or SVG libraries required).
+- **5 UI Presets:** Instant styling with `variant="pill"`, `variant="ios"`, `variant="material"`, `variant="outline"`, or `variant="default"`.
+- **Immediate on Enter:** Pressing keyboard search/enter triggers instant search without delay.
+- **Smart `minLength` Support:** Prevents single-letter queries while supporting short queries on enter.
+- **Built-in `useDebounce` Hook:** Reusable hook for custom input implementations.
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+For full props documentation, visit the [Package README](packages/react-native-debounced-search/README.md).
 
-## Congratulations! :tada:
+---
 
-You've successfully run and modified your React Native App. :partying_face:
+## 🚢 Publishing to NPM
 
-### Now what?
+To publish a new version of the package to the NPM registry:
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+```bash
+cd packages/react-native-debounced-search
 
-# Troubleshooting
+# 1. Ensure you are logged into your npm account
+npm login
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+# 2. Publish as a public scoped package
+npm publish --access public
+```
 
-# Learn More
+---
 
-To learn more about React Native, take a look at the following resources:
+## 🧪 Type Checking
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Validate TypeScript types across the entire project and package:
+
+```bash
+npx tsc --noEmit
+```
+
+---
+
+## 👨‍💻 Author
+
+**Nilesh Ahir**  
+* GitHub: [@nileshahir](https://github.com/nileshahir)  
+* Organization: [Izonnet Web Solution](https://izonnet.com)
+
+---
+
+## 📄 License
+
+This repository is open-sourced under the [MIT License](LICENSE).

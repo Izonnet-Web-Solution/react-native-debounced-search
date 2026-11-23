@@ -2,6 +2,7 @@
   "name": "DebouncedSearch",
   "version": "0.0.1",
   "private": true,
+  "author": "Nilesh Ahir",
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
@@ -10,9 +11,10 @@
     "test": "jest"
   },
   "dependencies": {
+    "@izonnet-web-solution/react-native-debounced-search": "file:packages/react-native-debounced-search",
+    "@react-native/new-app-screen": "0.88.1",
     "react": "19.3.0",
     "react-native": "0.88.1",
-    "@react-native/new-app-screen": "0.88.1",
     "react-native-safe-area-context": "^5.5.2"
   },
   "devDependencies": {
