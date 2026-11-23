@@ -56,6 +56,10 @@ yarn-error.log
 # Bundle artifact
 *.jsbundle
 
+# NPM Token (Do not commit token to GitHub)
+.npmrc
+**/.npmrc
+
 # Ruby / CocoaPods
 **/Pods/
 /vendor/bundle/

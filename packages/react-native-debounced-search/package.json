@@ -1,6 +1,6 @@
 {
   "name": "@izonnet-web-solution/react-native-debounced-search",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A high-performance debounced search input component and hook for React Native",
   "main": "src/index.ts",
   "module": "src/index.ts",
